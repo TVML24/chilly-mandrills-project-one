@@ -33,51 +33,73 @@ function grabParams() {
 }
 
 function searchAPI(searchTerm) {
-            fetch(searchTerm)
+    fetch(searchTerm)
 
-             .then (function(response) {
-                if (!response.ok) {
-                    throw response.json();
+        .then(function (response) {
+            if (!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locResults) {
+            // Selected each card(eventBox)
+            var eventBox = document.querySelectorAll('.header');
+            // Looped over these cards and assigned an event name to each one
+            for (var i = 0; i < eventBox.length; i++) {
+                // var eventName = locResults._embedded.events[i].name
+                eventBox[i].textContent = locResults._embedded.events[i].name;
+
+            }
+            // selected each Cards information section.
+            var eventInfo = document.querySelectorAll('.description');
+            // Looped over these information sections and assigned related details.
+            for (var i = 0; i < eventInfo.length; i++) {
+                // var eventName = locResults._embedded.events[i].info
+                eventInfo[i].textContent = locResults._embedded.events[i].info;
+
+            }
+           
+            
+            console.log(locResults);
+            // if there are no results found it will log no results in the console and on the page
+            // results here refers to the data that fulfilled the promise .then was waiting for, here the return of response.json().
+            if (!locResults._embedded.events.length) {
+                console.log("No Results Found!");
+            } else {
+                for (var i = 0; i < locResults._embedded.events.length; i++) {
+                    printResults(locResults._embedded.events[i]);
                 }
-                return response.json();              
-            })
-             .then (function (locResults) {
-                console.log(locResults);
-// if there are no results found it will log no results in the console and on the page
-// results here refers to the data that fulfilled the promise .then was waiting for, here the return of response.json().
-                if(!locResults._embedded.events.length) {
-                    console.log("No Results Found!");
-                } else {
-                    for (var i =0; i <locResults._embedded.events.length; i++) {
-                        printResults(locResults._embedded.events[i]);
-                    }
-                }
-            })
-// above there was a throw exception, here is the catch
-// should an error be encountered (and the promise unable to be fuilfilled) the code will resume from this block
-             .catch (function (error) {
-                console.error(error);
-                });
+            }
+        })
+        // above there was a throw exception, here is the catch
+        // should an error be encountered (and the promise unable to be fuilfilled) the code will resume from this block
+        .catch(function (error) {
+            console.error(error);
+        });
+
+
+
+    function printResults() {
+        // console.log(locResults.name);
+
+
+    }
+    // ONE ISSUE: the information available in these objects is sometimes missing or undefined.
+    // the final function will have to be written so that it does not return undefined results and instead gives placeholder text
+
+    // this returns the start date of the event - or the first show if there are more than one
+    // console.log(resultObj.dates.start.localDate);
+    // // this returns the start time of the show
+    // console.log(resultObj.dates.start.localTime);
+    // this returns the name of the venue the event is being held
+    // console.log(resultObj._embedded.venues[0].name);
+    // this returns the name of the event
+    // console.log(resultObj.name);
+    // this returns basic info about the event
+    // console.log(resultObj.info);
+    // these return pricing for tickets. The min value seems to be standing and max seems to be seated.
+    // console.log(resultObj.priceRanges[0].min);
+    // console.log(resultObj.priceRanges[0].max);
+
 }
-
-    function printResults(resultObj) {
-
-// ONE ISSUE: the information available in these objects is sometimes missing or undefined.
-// the final function will have to be written so that it does not return undefined results and instead gives placeholder text
-
-// this returns the start date of the event - or the first show if there are more than one
-        // console.log(resultObj.dates.start.localDate);
-// this returns the start time of the show
-        // console.log(resultObj.dates.start.localTime);
-// this returns the name of the venue the event is being held
-        // console.log(resultObj._embedded.venues[0].name);
-// this returns the name of the event
-        // console.log(resultObj.name);
-// this returns basic info about the event
-        // console.log(resultObj.info);
-// these return pricing for tickets. The min value seems to be standing and max seems to be seated.
-        // console.log(resultObj.priceRanges[0].min);
-        // console.log(resultObj.priceRanges[0].max);
-}
-
 grabParams();
