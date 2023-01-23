@@ -1,3 +1,5 @@
+var cardBox = document.getElementById("card-box");
+
 
 // The comment below shows how you can get the ticketmaster API to return only events from Australia (countryCode=AU), NSW (locale=*&marketId=302), rock music (classificationName = rock)
 // https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*&marketId=302&countryCode=AU&classificationName=rock
@@ -43,21 +45,21 @@ function searchAPI(searchTerm) {
         })
         .then(function (locResults) {
             // Selected each card(eventBox)
-            var eventBox = document.querySelectorAll('.header');
-            // Looped over these cards and assigned an event name to each one
-            for (var i = 0; i < eventBox.length; i++) {
-                // var eventName = locResults._embedded.events[i].name
-                eventBox[i].textContent = locResults._embedded.events[i].name;
+            // var eventBox = document.querySelectorAll('.header');
+            // // Looped over these cards and assigned an event name to each one
+            // for (var i = 0; i < eventBox.length; i++) {
+            //     // var eventName = locResults._embedded.events[i].name
+            //     eventBox[i].textContent = locResults._embedded.events[i].name;
 
-            }
-            // selected each Cards information section.
-            var eventInfo = document.querySelectorAll('.description');
-            // Looped over these information sections and assigned related details.
-            for (var i = 0; i < eventInfo.length; i++) {
-                // var eventName = locResults._embedded.events[i].info
-                eventInfo[i].textContent = locResults._embedded.events[i].info;
+            // }
+            // // selected each Cards information section.
+            // var eventInfo = document.querySelectorAll('.description');
+            // // Looped over these information sections and assigned related details.
+            // for (var i = 0; i < eventInfo.length; i++) {
+            //     // var eventName = locResults._embedded.events[i].info
+            //     eventInfo[i].textContent = locResults._embedded.events[i].info;
 
-            }
+            // }
            
             
             console.log(locResults);
@@ -79,9 +81,45 @@ function searchAPI(searchTerm) {
 
 
 
-    function printResults() {
-        // console.log(locResults.name);
+    function printResults(resultObj) {
+        var eventCard = document.createElement("div");
+            eventCard.classList.add("card");
+        var imageDiv = document.createElement("div");
+            imageDiv.classList.add("image");
+        var cardImage = document.createElement("img");
+            cardImage.src = resultObj.images[0].url;
+            cardImage.alt = resultObj.name;
+        var cardContent= document.createElement("div");
+            cardContent.className += "content";
+        var cardHeader = document.createElement("div");
+            cardHeader.className += "header";
+            cardHeader.textContent = resultObj.name;
+        var metaDiv = document.createElement("div");
+            metaDiv.className += "meta";
+            metaLink = document.createElement("a");
+        var descriptionDiv = document.createElement("div");
+            descriptionDiv.className += "description";
+            descriptionDiv.textContent = resultObj.info;
+        var excontentDiv = document.createElement("div");
+            excontentDiv.className += "extra content";
+        var spanOne = document.createElement("span");
+            spanOne.className += "right floated";
+            spanOne.textContent = resultObj._embedded.venues[0].name;
+        var spanTwo = document.createElement("span");
+            spanTwo.textContent = "$" + resultObj.priceRanges[0].min;
+            imageDiv.append(cardImage);
+            cardContent.append(cardHeader);
+            metaDiv.append(metaLink);
+            cardContent.append(metaDiv);
+            cardContent.append(descriptionDiv);
+            excontentDiv.append(spanOne);
+            excontentDiv.append(spanTwo);
+            eventCard.append(imageDiv);
+            eventCard.append(cardContent);
+            eventCard.append(excontentDiv);
+            cardBox.append(eventCard);
 
+        console.log(resultObj);
 
     }
     // ONE ISSUE: the information available in these objects is sometimes missing or undefined.
