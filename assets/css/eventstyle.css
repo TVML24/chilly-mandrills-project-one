@@ -1,0 +1,82 @@
+#content {
+    min-height: 100px;
+}
+
+.ui.grid {
+    padding: 0 !important;
+}
+
+/* response form ticketmaster's event lists 
+.ui segment {
+    max-height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+} */
+
+.pushable.segment {
+    margin: 0 !important;
+}
+
+.web-logo{
+    font-size: 2em !important;
+    line-height: 1.5em !important;
+    margin-left:10px !important;
+}
+
+.mobile-page-title{
+    text-align: center;
+    width:100%;
+    margin-left: -53.52px;
+    margin-top: auto;
+    margin-bottom:auto !important;
+}
+
+.desktop-page-title{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom:auto !important;
+    margin-left:8px;
+}
+
+.hideItem{
+    display:none;
+    padding:0px;
+    margin:0px;
+    width:0% !important;
+}
+
+.flex-wrapper{
+    width:100%;
+    display: flex;
+    /* position: -webkit-sticky;
+    position: sticky;
+    top:0; */
+    margin-bottom:20px;
+}
+
+.search-input{
+    margin-top:5px;
+    margin-bottom:10px;
+    margin-left:5px; 
+    justify-content: flex-start;
+}
+.search-button{
+    margin-top:5px !important;
+    margin-bottom:10px !important;
+    margin-left: 5px !important;
+}
+
+@media only screen and (max-width: 400px){
+    .flex-wrapper{
+        display: block;
+    }
+    .btn-flex-wrapper{
+        width:100%;
+        display: flex;
+    }
+    .search-button{
+        width: 80%;
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
+}

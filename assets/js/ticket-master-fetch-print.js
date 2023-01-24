@@ -68,6 +68,7 @@ function searchAPI(searchTerm) {
             if (!locResults._embedded.events.length) {
                 console.log("No Results Found!");
             } else {
+                console.log("events==>",locResults._embedded.events)
                 for (var i = 0; i < locResults._embedded.events.length; i++) {
                     printResults(locResults._embedded.events[i]);
                 }
@@ -106,6 +107,7 @@ function searchAPI(searchTerm) {
             spanOne.className += "right floated";
             spanOne.textContent = resultObj._embedded.venues[0].name;
         var spanTwo = document.createElement("span");
+        console.log("result=>", resultObj);
             spanTwo.textContent = "$" + resultObj.priceRanges[0].min;
             imageDiv.append(cardImage);
             cardContent.append(cardHeader);
@@ -140,4 +142,10 @@ function searchAPI(searchTerm) {
     // console.log(resultObj.priceRanges[0].max);
 
 }
+
+function searchEvents(){
+  // search required to know what parameters the api needs.
+  // location and artist doesnt match the api.
+}
+
 grabParams();
