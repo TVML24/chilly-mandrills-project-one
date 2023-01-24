@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <!-- <header>
+        <h1>Events!</h1>
+    </header>
+    <main>
+        <div class="ui link cards" id="card-box">
+        </div>
+    </main> -->
+
+    <div class="ui grid">
+        <!-- Desktop Mode -->
+        
+        <div class="computer only row">
+            <div class="column">
+                <div class="ui menu">
+                    <i class="coffee icon web-logo"></i><h1 class="desktop-page-title">MyEvents</h1>
+                    <div class="right menu">
+                    <a class="item">Menu Item A</a>
+                    <a class="item">Menu Item B</a>
+                    <a class="item">Menu Item C</a>
+                    <a class="item">Menu Item D</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tablet mobile only row">
+            <div class="column">
+                <div class="ui menu">
+                    <!-- Hamburger icon -->
+                    <a id="mobile_item" class="item"><i class="bars icon"></i></a>
+                    <h1 class="mobile-page-title">MyEvents</h1>
+                </div>
+            </div>
+        </div>
+        <div class="flex-wrapper">
+            <div class="ui input search-input">
+                <input type="text" placeholder="Genre" id="genre_input" />
+            </div>
+            <div class="ui input search-input">
+                <input type="text" placeholder="Location" id="location_input" />
+            </div>
+            <div class="btn-flex-wrapper">
+            <button class="ui primary button search-button" onclick="searchEvents()">
+                Search
+            </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile mode when click hamburger, ui side bar will appear -->
+    <div class="ui pushable segment">
+        <div class="ui sidebar vertical menu">
+            <a class="item">Menu Item A</a>
+            <a class="item">Menu Item B</a>
+            <a class="item">Menu Item C</a>
+            <a class="item">Menu Item D</a>
+        </div>
+        <div class="pusher">
+            
+            <div class="ui equal width grid">
+                <!-- <div class="hideItem four wide column"></div> -->
+                <div class="column">
+                    <div id="content" class="ui segment">
+                        <!-- card box populated by api with card element per event -->
+                        <div class="ui link cards" id="card-box">
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.js"></script>
+
+    <script src="./assets/js/ticket-master-fetch-print.js"></script>
+    <script src="./assets/js/spotify-master-fetch-print.js"></script>
+    <script src="./assets/js/script.js" async defer></script>
+</body>
+
+</html>
