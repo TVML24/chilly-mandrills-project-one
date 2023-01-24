@@ -105,10 +105,17 @@ function searchAPI(searchTerm) {
             excontentDiv.className += "extra content";
         var spanOne = document.createElement("span");
             spanOne.className += "right floated";
+        var eventPrice;
+        if (!resultObj.priceRanges) {   
+            eventPrice = "No Pricing Available";
+        } else if (resultObj.priceRanges[0].min === 0) {
+            eventPrice = "$" + resultObj.priceRanges[0].max;
+        } else {
+            eventPrice = "$" + resultObj.priceRanges[0].min;
+        }
             spanOne.textContent = resultObj._embedded.venues[0].name;
         var spanTwo = document.createElement("span");
-        console.log("result=>", resultObj);
-            spanTwo.textContent = "$" + resultObj.priceRanges[0].min;
+            spanTwo.textContent = eventPrice;
             imageDiv.append(cardImage);
             cardContent.append(cardHeader);
             metaDiv.append(metaLink);
