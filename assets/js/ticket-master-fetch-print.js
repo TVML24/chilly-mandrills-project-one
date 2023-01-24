@@ -116,6 +116,10 @@ function searchAPI(searchTerm) {
             spanOne.textContent = resultObj._embedded.venues[0].name;
         var spanTwo = document.createElement("span");
             spanTwo.textContent = eventPrice;
+        var infoBtn = document.createElement('div');
+            infoBtn.classList.add("ui", "bottom", "attached", "button"); 
+            infoBtn.innerHTML = '<i class="angle down icon"></i>More Information';  
+            //Appends dynamically created elements 
             imageDiv.append(cardImage);
             cardContent.append(cardHeader);
             metaDiv.append(metaLink);
@@ -127,6 +131,7 @@ function searchAPI(searchTerm) {
             eventCard.append(cardContent);
             eventCard.append(excontentDiv);
             cardBox.append(eventCard);
+            eventCard.append(infoBtn);
 
         console.log(resultObj);
 
@@ -156,3 +161,20 @@ function searchEvents(){
 }
 
 grabParams();
+
+function toggleVisInfo(){
+    var information = document.querySelectorAll('.description');
+    information.forEach(function(info){
+        if (info.style.display === "block") {
+        info.style.display = "none";
+    }else{
+        info.style.display = "block";
+    }
+})
+   
+}
+addEventListener('click', toggleVisInfo);
+
+  
+
+
