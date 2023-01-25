@@ -1,5 +1,11 @@
 var cardBox = document.getElementById("card-box");
+var searchBtn = document.getElementById("search-button");
 
+// this button calls the clear cards function
+// after inputs are implemented we can add the search functions from the landing page API to this API where necessary
+// these this function could be called from the clear cards function
+// OR we could implement a go back button
+searchBtn.addEventListener("click", clearCards);
 
 // The comment below shows how you can get the ticketmaster API to return only events from Australia (countryCode=AU), NSW (locale=*&marketId=302), rock music (classificationName = rock)
 // https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*&marketId=302&countryCode=AU&classificationName=rock
@@ -20,7 +26,8 @@ function grabParams() {
 // so this variable contains the who string we need to search the ticketmasterAPI
     // var params = document.location.search.split("?");
     //(this is an example URL -> the real URL would be built by another function that grabbed the genre from spotify and a dropdown select for location)
-    var params = "C:/Users/exmaple/bootcamp/test/search-results.html/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*&marketId=302&countryCode=AU&classificationName=rock";
+    var params = document.location.search;
+        console.log(params);
 // .pop() returns the last element of an array (which we made by splitting document.location)
     var selectedTerm = params.split('?').pop();
     console.log(selectedTerm);
@@ -68,7 +75,6 @@ function searchAPI(searchTerm) {
             if (!locResults._embedded.events.length) {
                 console.log("No Results Found!");
             } else {
-                console.log("events==>",locResults._embedded.events)
                 for (var i = 0; i < locResults._embedded.events.length; i++) {
                     printResults(locResults._embedded.events[i]);
                 }
@@ -155,10 +161,6 @@ function searchAPI(searchTerm) {
 
 }
 
-function searchEvents(){
-  // search required to know what parameters the api needs.
-  // location and artist doesnt match the api.
-}
 
 grabParams();
 
@@ -175,6 +177,12 @@ function toggleVisInfo(){
 }
 addEventListener('click', toggleVisInfo);
 
-  
+// this function clears the cards from the card box element
+function clearCards () {
+    while (cardBox.firstChild) {
+       cardBox.removeChild(cardBox.lastChild);
+    }
+}
+
 
 
