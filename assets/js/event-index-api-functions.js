@@ -153,7 +153,7 @@ function searchAPI(searchTerm) {
             eventCard.append(infoBtn);
 
         console.log(resultObj.dates.start.localDate);
-
+        infoBtn.addEventListener('click', toggleVisInfo);
     }
     // ONE ISSUE: the information available in these objects is sometimes missing or undefined.
     // the final function will have to be written so that it does not return undefined results and instead gives placeholder text
@@ -171,13 +171,14 @@ function searchAPI(searchTerm) {
     // these return pricing for tickets. The min value seems to be standing and max seems to be seated.
     // console.log(resultObj.priceRanges[0].min);
     // console.log(resultObj.priceRanges[0].max);
-
+   
 }
 
 
 grabParams();
 
 function toggleVisInfo() {
+    var infoBtn = document.querySelectorAll(infoBtn);
     var information = document.querySelectorAll('.description');
     information.forEach(function (info) {
         if (info.style.display == "none") {
@@ -188,7 +189,7 @@ function toggleVisInfo() {
     })
 
 }
-addEventListener('click', toggleVisInfo);
+
 
 // this function clears the cards from the card box element
 function clearCards () {
