@@ -1,37 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
-        <link rel="stylesheet" href="./assets/css/style.css">
-    </head>
-    <body>
-        <header>
-            <h1>Events!</h1>
-        </header>    
-        <main>
-            <button type="button" id="test-button">Test Button</button>
-            <div>
-                <form class="ui form">
-                    <div class="field">
-                      <label>Artist</label>
-                      <input type="text" name="artist" placeholder="Favourite Artist" id="artist-name">
-                    </div>
-                    <div class="field">
-                      <label>Location</label>
-                      <input type="text" name="location" placeholder="Your Location">
-                    </div>
-                    <button class="ui button" type="submit" id="search-button">Search</button>
-                  </form>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <main>
+        <div class="column">
+            <div class="ui menu">
+                <h1><i class="headphones icon"></i> Fetch Event</h1>
             </div>
-            <div class="ui link cards" id="card-box">
+        </div>
+        <div class="ui masthead segment inverted blue">
+            <div class="ui text container center aligned">
+                <h1><i class="headphones icon"></i> Fetch Event <i class="headphones icon"></i></h1>
+                <div class="sub header">Love live music but your favourite artists aren't touring in your area? Find recommendations for gigs you'll love just as much by inputting your favourite artist and your location.</div>
             </div>
-        </main>
+        </div>
+
+        <div class="ui vertical masthead padded segment">
+            <div class="ui container">
+                <div class="ui centered grid">
+                    <div class="ui secondary segment">
+                        <div class="six wide column center aligned">
+                            <h3>Insert your favourite artist and location to get started</h3>
+                            <div class="ui form">
+                                <div class="field">
+                                    <label>Favourite Artist</label>
+                                    <input type="text" name="artist" placeholder="Favourite Artist" id="artist-name">
+                                </div>
+                                <div class="field">
+                                    <label>Location</label>
+                                    <select class="ui search dropdown">
+                                        <option value="">Select Location</option>
+                                        <option value="ACT" market-id="302">Australian Capital Territory</option>
+                                        <option value="NSW" market-id="302">New South Wales</option>
+                                        <option value="TAS" market-id="305">Tasmania</option>
+                                        <!-- // was WA 304 or 306? -->
+                                        <option value="WA" market-id="304">Western Australia</option>
+                                        <option value="VIC" market-id="305">Victoria</option>
+                                    </select>
+                                </div>
+                                <button class="ui blue button" type="submit" id="search-button">Search</button>
+                                <button class="ui blue button" type="button" id="test-button">Test Button</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="ui vertical footer segment inverted blue">
+            <div class="ui container center aligned">
+                <p>Created by Lily Hargreaves, Timothy Van Mook-Letcher, Michael Monaghan and Elaine Lim</p>
+            </div>
+        </div>
+    </main>
     <script src="./assets/js/landing-page-api-functions.js"></script>
-    <script src="./assets/js/eventscript.js" async defer></script>
-    </body>
+</body>
+
 </html>
