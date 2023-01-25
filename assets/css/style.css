@@ -67,6 +67,20 @@
     margin-left: 5px !important;
 }
 
+.ui.segment {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.masthead.segment {
+    min-height: 375px;
+}
+
+.footer.segment {
+    min-height: 125px;
+}
+
 @media only screen and (max-width: 400px){
     .flex-wrapper{
         display: block;
