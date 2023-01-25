@@ -41,8 +41,8 @@ function getToken(searchVariables) {
 function formSubmitHandler() {
   
   // the below line replaces any space with a hyphen
-  var artist = artistInputEl.value;
-      artist.replace(" ", "-").trim();
+  var artist = artistInputEl.value.replace(" ", "-").trim();
+      console.log(artist);
   var location = locationinputEl.options[locationinputEl.selectedIndex].value;
   // this line combines the two variables, because we can only effectively pass one variable to the next function
   var searchVariables = artist + " " + location;
