@@ -91,26 +91,38 @@ function searchAPI(searchTerm) {
     function printResults(resultObj) {
         var eventCard = document.createElement("div");
             eventCard.classList.add("card");
+
         var imageDiv = document.createElement("div");
             imageDiv.classList.add("image");
+
         var cardImage = document.createElement("img");
             cardImage.src = resultObj.images[0].url;
             cardImage.alt = resultObj.name;
+
         var cardContent= document.createElement("div");
             cardContent.className += "content";
+
         var cardHeader = document.createElement("div");
             cardHeader.className += "header";
             cardHeader.textContent = resultObj.name;
+
         var metaDiv = document.createElement("div");
             metaDiv.className += "meta";
             metaLink = document.createElement("a");
+
         var descriptionDiv = document.createElement("div");
             descriptionDiv.className += "description";
             descriptionDiv.textContent = resultObj.info;
+
         var excontentDiv = document.createElement("div");
             excontentDiv.className += "extra content";
+
+        var spanThree = document.createElement("span");
+            spanThree.className +=  "date";
+            spanThree.textContent = resultObj.dates.start.localDate;
         var spanOne = document.createElement("span");
             spanOne.className += "right floated";
+
         var eventPrice;
         if (!resultObj.priceRanges) {   
             eventPrice = "No Pricing Available";
@@ -133,13 +145,14 @@ function searchAPI(searchTerm) {
             cardContent.append(descriptionDiv);
             excontentDiv.append(spanOne);
             excontentDiv.append(spanTwo);
+            cardContent.append(spanThree);
             eventCard.append(imageDiv);
             eventCard.append(cardContent);
             eventCard.append(excontentDiv);
             cardBox.append(eventCard);
             eventCard.append(infoBtn);
 
-        console.log(resultObj);
+        console.log(resultObj.dates.start.localDate);
 
     }
     // ONE ISSUE: the information available in these objects is sometimes missing or undefined.
@@ -164,16 +177,16 @@ function searchAPI(searchTerm) {
 
 grabParams();
 
-function toggleVisInfo(){
+function toggleVisInfo() {
     var information = document.querySelectorAll('.description');
-    information.forEach(function(info){
-        if (info.style.display === "block") {
-        info.style.display = "none";
-    }else{
-        info.style.display = "block";
-    }
-})
-   
+    information.forEach(function (info) {
+        if (info.style.display == "none") {
+            info.style.display = "block";
+        } else {
+            info.style.display = "none";
+        }
+    })
+
 }
 addEventListener('click', toggleVisInfo);
 
