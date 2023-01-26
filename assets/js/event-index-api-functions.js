@@ -149,7 +149,7 @@ function searchAPI(searchTerm) {
         var ticketBtn = document.createElement('div');
             ticketBtn.setAttribute('id', "ticketBtn");
             ticketBtn.classList.add("ui", "bottom", "attached", "button"); 
-            ticketBtn.innerHTML = '<i class="dollar sign icon"></i>Tickets';
+            ticketBtn.innerHTML = 'Tickets';
             ticketBtn.addEventListener('click', function(){
                 window.location.href = resultObj.url;
             });
