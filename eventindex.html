@@ -49,10 +49,18 @@
         </div>
         <div class="flex-wrapper">
             <div class="ui input search-input">
-                <input type="text" placeholder="Genre" id="genre_input" />
+                <input type="text" placeholder="Artist" id="artist-name" />
             </div>
             <div class="ui input search-input">
-                <input type="text" placeholder="Location" id="location_input" />
+                <select class="ui search dropdown" id="location-dropdown">
+                    <option value="">Select Location</option>
+                    <option value="302">Australian Capital Territory</option>
+                    <option value="302">New South Wales</option>
+                    <option value="305">Tasmania</option>
+                <!-- // was WA 304 or 306? -->
+                    <option value="304">Western Australia</option>
+                    <option value="305">Victoria</option>
+                </select>
             </div>
             <div class="btn-flex-wrapper">
             <button class="ui primary button search-button" id= "search-button">
@@ -63,13 +71,13 @@
     </div>
 
     <!-- mobile mode when click hamburger, ui side bar will appear -->
-    <div class="ui pushable segment">
+    <!-- <div class="ui pushable segment">
         <div class="ui sidebar vertical menu">
             <a class="item">Menu Item A</a>
             <a class="item">Menu Item B</a>
             <a class="item">Menu Item C</a>
             <a class="item">Menu Item D</a>
-        </div>
+        </div> -->
         <div class="pusher">
             
             <div class="ui equal width grid">
