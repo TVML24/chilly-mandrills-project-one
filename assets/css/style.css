@@ -95,3 +95,12 @@
         margin-right:auto !important;
     }
 }
+/* Date of events, sits below Name of Event. */
+span.date {
+    color: crimson;
+    font-weight: bold;
+}
+span.date::before {
+    content: 'Date - ';
+    color:crimson;
+}
