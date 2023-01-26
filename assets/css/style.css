@@ -104,3 +104,9 @@ span.date::before {
     content: 'Date - ';
     color:crimson;
 }
+#ticketBtn {
+    background: #2185d0;
+    border: 1px solid;
+    color:white;
+    
+}
