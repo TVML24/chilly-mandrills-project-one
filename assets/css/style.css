@@ -71,6 +71,8 @@
     display: flex;
     align-content: center;
     align-items: center;
+    justify-content: center;
+    background:lightblue;
 }
 
 .masthead.segment {
@@ -103,4 +105,22 @@ span.date {
 span.date::before {
     content: 'Date - ';
     color:crimson;
+}
+#ticketBtn {
+    background: #2185d0;
+    border: 1px solid black;
+    color:white;
+}
+.ui.cards>.card>.content {
+    background: lightgray;
+    justify-content: center;
+}
+.ui.cards{
+    justify-content: center;
+    max-width: 1245px;
+  
+}
+.ui.cards>.card {
+    border:1px solid;
+    box-shadow: 4px 4px 7px;
 }

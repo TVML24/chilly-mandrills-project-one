@@ -127,6 +127,7 @@ function searchAPI(searchTerm) {
         var spanThree = document.createElement("span");
             spanThree.className +=  "date";
             spanThree.textContent = resultObj.dates.start.localDate;
+
         var spanOne = document.createElement("span");
             spanOne.className += "right floated";
 
@@ -143,7 +144,16 @@ function searchAPI(searchTerm) {
             spanTwo.textContent = eventPrice;
         var infoBtn = document.createElement('div');
             infoBtn.classList.add("ui", "bottom", "attached", "button"); 
-            infoBtn.innerHTML = '<i class="angle down icon"></i>More Information';  
+            infoBtn.innerHTML = '<i class="angle down icon"></i>More Information';
+            
+        var ticketBtn = document.createElement('div');
+            ticketBtn.setAttribute('id', "ticketBtn");
+            ticketBtn.classList.add("ui", "bottom", "attached", "button"); 
+            ticketBtn.innerHTML = 'Tickets';
+            ticketBtn.addEventListener('click', function(){
+                window.location.href = resultObj.url;
+            });
+        
             //Appends dynamically created elements 
             imageDiv.append(cardImage);
             cardContent.append(cardHeader);
@@ -157,10 +167,13 @@ function searchAPI(searchTerm) {
             eventCard.append(cardContent);
             eventCard.append(excontentDiv);
             cardBox.append(eventCard);
+            eventCard.append(ticketBtn);
             eventCard.append(infoBtn);
+            
 
         console.log(resultObj.dates.start.localDate);
         infoBtn.addEventListener('click', toggleVisInfo);
+        
     }
     // ONE ISSUE: the information available in these objects is sometimes missing or undefined.
     // the final function will have to be written so that it does not return undefined results and instead gives placeholder text
