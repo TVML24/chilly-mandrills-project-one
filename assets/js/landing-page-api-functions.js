@@ -104,6 +104,7 @@ function saveSearch() {
   var search = {
     artist: artistInputEl.value.trim(),
     location: locationinputEl.value,
+    state: locationinputEl.options[locationinputEl.selectedIndex].text,
   }
 
   if (search !== "") {
@@ -131,7 +132,7 @@ function populateSearches () {
   for (let i = 0; i < savedSearches.length; i++) {
     var liElement = document.createElement("button");
     liElement.classList.add("ui", "basic", "blue", "button");
-    liElement.textContent = savedSearches[i].artist + " in " + savedSearches[i].location;
+    liElement.textContent = savedSearches[i].artist + " in " + savedSearches[i].state;
     searchHistory.appendChild(liElement);
   }
   }
