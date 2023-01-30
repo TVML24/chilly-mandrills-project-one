@@ -133,3 +133,8 @@ span.date::before {
 .hidden {
     display:none;
 }
+.description {
+    overflow-y:auto;
+    max-height: 250px;
+    position:relative;
+}

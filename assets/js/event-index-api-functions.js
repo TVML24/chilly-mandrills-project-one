@@ -120,6 +120,9 @@ function searchAPI(searchTerm) {
         var descriptionDiv = document.createElement("div");
             descriptionDiv.className += "description hidden";
             descriptionDiv.textContent = resultObj.info;
+            if(!resultObj.info) {
+                descriptionDiv.textContent = "Information Unavailable";
+            }
 
         var excontentDiv = document.createElement("div");
             excontentDiv.className += "extra content";
@@ -178,6 +181,7 @@ function searchAPI(searchTerm) {
                 descriptionDiv.style.display = "none";
             } else {
                 descriptionDiv.style.display = "block";
+                
             }
            
          
