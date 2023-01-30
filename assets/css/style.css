@@ -130,3 +130,6 @@ span.date::before {
     border:1px solid;
     box-shadow: 4px 4px 7px;
 }
+.hidden {
+    display:none;
+}

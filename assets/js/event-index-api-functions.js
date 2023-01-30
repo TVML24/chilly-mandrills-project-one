@@ -118,7 +118,7 @@ function searchAPI(searchTerm) {
             metaLink = document.createElement("a");
 
         var descriptionDiv = document.createElement("div");
-            descriptionDiv.className += "description";
+            descriptionDiv.className += "description hidden";
             descriptionDiv.textContent = resultObj.info;
 
         var excontentDiv = document.createElement("div");
@@ -172,6 +172,16 @@ function searchAPI(searchTerm) {
             
 
         console.log(resultObj.dates.start.localDate);
+        function toggleVisInfo() {
+            
+            if (descriptionDiv.style.display == "block") {
+                descriptionDiv.style.display = "none";
+            } else {
+                descriptionDiv.style.display = "block";
+            }
+           
+         
+         }
         infoBtn.addEventListener('click', toggleVisInfo);
         
     }
@@ -197,18 +207,7 @@ function searchAPI(searchTerm) {
 
 grabParams();
 
-function toggleVisInfo() {
-    var infoBtn = document.querySelectorAll(infoBtn);
-    var information = document.querySelectorAll('.description');
-    information.forEach(function (info) {
-        if (info.style.display == "none") {
-            info.style.display = "block";
-        } else {
-            info.style.display = "none";
-        }
-    })
 
-}
 
 
 // this function clears the cards from the card box element
