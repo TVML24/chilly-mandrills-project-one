@@ -7,6 +7,7 @@ var client_secret = "c018f8890f564297ae26c852bb7ee4cd";
 var artistInputEl = document.getElementById("artist-name");
 var searchBtn = document.getElementById("search-button");
 var locationinputEl = document.getElementById("location-dropdown");
+var searchHistory = document.getElementById("search-history");
 
 
 // this adds the event listener to the search button
@@ -51,6 +52,9 @@ function formSubmitHandler() {
   if (searchVariables) {
     getToken(searchVariables);
   }
+
+  // this line runs the function to save searches to local storage
+  saveSearch();
 };
 
 // print artists genre data to console
@@ -92,6 +96,48 @@ function getGenre(token) {
 function documentAssign (queryString) {
   location.assign(queryString);
 }
+
+
+// this function saves search results to local storage
+
+function saveSearch() {
+  var search = {
+    artist: artistInputEl.value.trim(),
+    location: locationinputEl.value,
+    state: locationinputEl.options[locationinputEl.selectedIndex].text,
+  }
+
+  if (search !== "") {
+    var savedSearches =
+      JSON.parse(window.localStorage.getItem("savedSearches")) || [];
+    //putting the data from the object into local storage
+    savedSearches.push(search);
+    window.localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+  }
+}
+
+// this function adds 'previously searched' buttons to the homepage if data exists in local storage
+
+function populateSearches () {
+  searchHistory.innerHTML = '';
+  var savedSearches = JSON.parse(window.localStorage.getItem("savedSearches")) || [];
+
+  if (searchHistory != null) {
+  var titleElement = document.createElement("p");
+  titleElement.textContent = 'Previously Searched';
+  searchHistory.appendChild(titleElement);
+}
+  
+  // looping through the searches array and creating a new list item for each of the saved searches
+  for (let i = 0; i < savedSearches.length; i++) {
+    var liElement = document.createElement("button");
+    liElement.classList.add("ui", "basic", "blue", "button");
+    liElement.textContent = savedSearches[i].artist + " in " + savedSearches[i].state;
+    searchHistory.appendChild(liElement);
+  }
+  }
+
+  populateSearches();
 
 // define function to be executed on 'click' of the form 'search' button
 // to be un-commented after adding of landing page
