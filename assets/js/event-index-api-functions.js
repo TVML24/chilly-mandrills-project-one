@@ -113,6 +113,7 @@ function searchAPI(searchTerm) {
             cardHeader.className += "header";
             cardHeader.textContent = resultObj.name;
 
+
         var metaDiv = document.createElement("div");
             metaDiv.className += "meta";
             metaLink = document.createElement("a");
