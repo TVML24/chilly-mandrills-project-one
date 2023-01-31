@@ -115,6 +115,7 @@ function searchAPI(searchTerm) {
             cardHeader.className += "header";
             cardHeader.textContent = resultObj.name;
 
+
         var metaDiv = document.createElement("div");
             metaDiv.className += "meta";
             metaLink = document.createElement("a");
@@ -122,6 +123,9 @@ function searchAPI(searchTerm) {
         var descriptionDiv = document.createElement("div");
             descriptionDiv.className += "description hidden";
             descriptionDiv.textContent = resultObj.info;
+            if(!resultObj.info) {
+                descriptionDiv.textContent = "Information Unavailable";
+            }
 
         var excontentDiv = document.createElement("div");
             excontentDiv.className += "extra content";
@@ -180,6 +184,7 @@ function searchAPI(searchTerm) {
                 descriptionDiv.style.display = "none";
             } else {
                 descriptionDiv.style.display = "block";
+                
             }
            
          
