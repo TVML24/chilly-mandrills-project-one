@@ -82,6 +82,7 @@ function searchAPI(searchTerm) {
             if (!locResults._embedded.events.length) {
                 console.log("No Results Found!");
             } else {
+                cardBox.innerHTML = " ";
                 for (var i = 0; i < locResults._embedded.events.length; i++) {
                     printResults(locResults._embedded.events[i]);
                 }
@@ -91,6 +92,7 @@ function searchAPI(searchTerm) {
         // should an error be encountered (and the promise unable to be fuilfilled) the code will resume from this block
         .catch(function (error) {
             console.error(error);
+            cardBox.innerHTML = "No Results Found!";
         });
 
 
