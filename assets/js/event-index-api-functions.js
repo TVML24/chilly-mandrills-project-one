@@ -125,6 +125,7 @@ function searchAPI(searchTerm) {
             descriptionDiv.textContent = resultObj.info;
             if(!resultObj.info) {
                 descriptionDiv.textContent = "Information Unavailable";
+                descriptionDiv.style.display = "block";
             }
 
         var excontentDiv = document.createElement("div");
