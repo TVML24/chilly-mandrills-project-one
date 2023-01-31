@@ -42,7 +42,7 @@ function getToken(searchVariables) {
 function formSubmitHandler() {
   
   // the below line replaces any space with a hyphen
-  var artist = artistInputEl.value.replace(" ", "-").trim();
+  var artist = artistInputEl.value.split(" ").join("-").trim();
       console.log(artist);
   var location = locationinputEl.options[locationinputEl.selectedIndex].value;
   // this line combines the two variables, because we can only effectively pass one variable to the next function
@@ -102,7 +102,7 @@ function documentAssign (queryString) {
 
 function saveSearch() {
   var search = {
-    artist: artistInputEl.value.trim(),
+    artist: artistInputEl.value.split(" ").join("-").trim(),
     location: locationinputEl.value,
     state: locationinputEl.options[locationinputEl.selectedIndex].text,
   }
@@ -132,8 +132,12 @@ function populateSearches () {
   for (let i = 0; i < savedSearches.length; i++) {
     var liElement = document.createElement("button");
     liElement.classList.add("ui", "basic", "blue", "button");
-    liElement.textContent = savedSearches[i].artist + " in " + savedSearches[i].state;
+    liElement.textContent = savedSearches[i].artist.split("-").join(" ") + " in " + savedSearches[i].state;
     searchHistory.appendChild(liElement);
+    liElement.addEventListener("click", function () {
+      var searchVariables = savedSearches[i].artist + " " + savedSearches[i].location;
+      getToken(searchVariables);
+    })
   }
   }
 
