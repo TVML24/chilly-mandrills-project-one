@@ -53,14 +53,13 @@ Final Desktop Wireframes:
 ![Desktop Wireframe - Landing Page](./assets/images/desktop-wireframe-1.png)
 ![Desktop Wireframe - Event Page](./assets/images/desktop-wireframe-2.png)
 
-Final Mobile Wireframes:
+Final Mobile Wireframes:<br>
 ![Mobile Wireframe - Landing Page](./assets/images/mobile-wireframe-1.png)
 ![Mobile Wireframe - Event Page](./assets/images/mobile-wireframe-2.png)
 
 ## Deployment
 
-(to be determined)
-https://lilyhargreaves.github.io/chilly-mandrills-project-one/LandingPage.html
+https://lilyhargreaves.github.io/chilly-mandrills-project-one/
 
 ## Credits
 
