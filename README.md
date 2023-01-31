@@ -1,9 +1,12 @@
 # chilly-mandrills' Musical Event Finder
 ## Description
 
-The motivation behind this project is to work collaberatively to create an application that uses existing open server-side APIs to suggest live music events to attend based on the user's musical preference and location. This is a great opportunity to practice working collaberatively with other developers in creating an application that is built on taking advantage of the knowledge and creativity of every group member, as well as practicing fundamental coding skills.
-***
+The motivation behind this project is to work collaboratively to create an application that uses existing open server-side APIs to suggest live music events to attend based on the user's musical preference and location. This is a great opportunity to practice working collaboratively with other developers in creating an application that is built on taking advantage of the knowledge and creativity of every group member, as well as practicing fundamental coding skills.
 
+![Desktop Screenshot - Landing Page](./assets/images/screenshot-1.png)
+![Desktop Screenshot - Events Page](./assets/images/screenshot-2.png)
+
+***
 ## Table of Contents
 
 - [Description](#description)
@@ -20,7 +23,7 @@ N/A
 ***
 ## Usage
 
-As a user I want to search for music events around Australia based on the name of an artist and corrosponding genre, returning relevant information about upcoming events in a location (City) of the users choice.
+As a user I want to search for music events around Australia based on the name of an artist and corresponding genre, returning relevant information about upcoming events in a location (City) of the users choice.
 
 WHEN I enter the name of my favourite artist and location of events,<br>
 THEN a list of events relating to the users input (Artist) genre are displayed, relevant to location choice.<br>
@@ -33,20 +36,31 @@ THEN there is a link to [Ticketmaster](https://www.ticketmaster.com.au/) website
 ***
 
 ### Future Development
-<li>Accomadation API and search results.</li>
-<li>Expand Event API to include wider variety of events (regional and rural).</li>
+<li>Accommodation API and search results.</li>
+<li>Expand the Event APIs used to include wider variety of events and locations (regional and rural). A limitation of the Ticketmaster API was that it did not support South Australia or the Northern Territory.</li>
 <li>Add Weather API for more efficient trip planning.</li>
-<li>Social media intergration.</li>
+<li>Add dynamic link to events to show directions via Google Maps.</li>
+<li>Add a social media integration that allows users to share the event they are attending to their Facebook page.</li>
+<li>Adding the ability for users to provide feedback on the application.</li>
+
 
 ***
 
-Screenshot:
+Initial Wireframes:
 ![Wireframe](./assets/images/wireframe.jpg)
+
+Final Desktop Wireframes:
+![Desktop Wireframe - Landing Page](./assets/images/desktop-wireframe-1.png)
+![Desktop Wireframe - Event Page](./assets/images/desktop-wireframe-2.png)
+
+Final Mobile Wireframes:
+![Mobile Wireframe - Landing Page](./assets/images/mobile-wireframe-1.png)
+![Mobile Wireframe - Event Page](./assets/images/mobile-wireframe-2.png)
 
 ## Deployment
 
 (to be determined)
-***
+https://lilyhargreaves.github.io/chilly-mandrills-project-one/LandingPage.html
 
 ## Credits
 
