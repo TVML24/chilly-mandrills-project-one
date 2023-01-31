@@ -34,10 +34,8 @@ function grabParams() {
     // var params = document.location.search.split("?");
     //(this is an example URL -> the real URL would be built by another function that grabbed the genre from spotify and a dropdown select for location)
     var params = document.location.search;
-        console.log(params);
 // .pop() returns the last element of an array (which we made by splitting document.location)
     var selectedTerm = params.split('?').pop();
-    console.log(selectedTerm);
 // this recombines the url into something we can make the request with
     var searchTerm = "https://app.ticketmaster.com/discovery/v2/events?" + selectedTerm;
 // this ends the function if searchTerm is not truthy
@@ -58,31 +56,13 @@ function searchAPI(searchTerm) {
             return response.json();
         })
         .then(function (locResults) {
-            // Selected each card(eventBox)
-            // var eventBox = document.querySelectorAll('.header');
-            // // Looped over these cards and assigned an event name to each one
-            // for (var i = 0; i < eventBox.length; i++) {
-            //     // var eventName = locResults._embedded.events[i].name
-            //     eventBox[i].textContent = locResults._embedded.events[i].name;
-
-            // }
-            // // selected each Cards information section.
-            // var eventInfo = document.querySelectorAll('.description');
-            // // Looped over these information sections and assigned related details.
-            // for (var i = 0; i < eventInfo.length; i++) {
-            //     // var eventName = locResults._embedded.events[i].info
-            //     eventInfo[i].textContent = locResults._embedded.events[i].info;
-
-            // }
-           
             
-            console.log(locResults);
-            // if there are no results found it will log no results in the console and on the page
-            // results here refers to the data that fulfilled the promise .then was waiting for, here the return of response.json().
+    // Validation Check
             if (!locResults._embedded.events.length) {
                 console.log("No Results Found!");
             } else {
                 cardBox.innerHTML = " ";
+    // passes information grabbed from the API to the printResults function
                 for (var i = 0; i < locResults._embedded.events.length; i++) {
                     printResults(locResults._embedded.events[i]);
                 }
@@ -177,45 +157,20 @@ function searchAPI(searchTerm) {
             eventCard.append(infoBtn);
             
 
-        console.log(resultObj.dates.start.localDate);
-        function toggleVisInfo() {
+// function to hid description information on pageload
+            function toggleVisInfo() {
             
-            if (descriptionDiv.style.display == "block") {
-                descriptionDiv.style.display = "none";
-            } else {
-                descriptionDiv.style.display = "block";
-                
+                if (descriptionDiv.style.display == "block") {
+                    descriptionDiv.style.display = "none";
+                } else {
+                    descriptionDiv.style.display = "block";
+                }
             }
-           
-         
-         }
-        infoBtn.addEventListener('click', toggleVisInfo);
-        
+            infoBtn.addEventListener('click', toggleVisInfo); 
     }
-    // ONE ISSUE: the information available in these objects is sometimes missing or undefined.
-    // the final function will have to be written so that it does not return undefined results and instead gives placeholder text
-
-    // this returns the start date of the event - or the first show if there are more than one
-    // console.log(resultObj.dates.start.localDate);
-    // // this returns the start time of the show
-    // console.log(resultObj.dates.start.localTime);
-    // this returns the name of the venue the event is being held
-    // console.log(resultObj._embedded.venues[0].name);
-    // this returns the name of the event
-    // console.log(resultObj.name);
-    // this returns basic info about the event
-    // console.log(resultObj.info);
-    // these return pricing for tickets. The min value seems to be standing and max seems to be seated.
-    // console.log(resultObj.priceRanges[0].min);
-    // console.log(resultObj.priceRanges[0].max);
-   
 }
 
-
 grabParams();
-
-
-
 
 // this function clears the cards from the card box element
 function clearCards () {
@@ -230,7 +185,6 @@ function formSubmitHandler() {
   
   // the below line replaces any space with a hyphen
   var artist = artistInputEl.value.replace(" ", "-").trim();
-      console.log(artist);
   var location = locationinputEl.options[locationinputEl.selectedIndex].value;
   // this line combines the two variables, because we can only effectively pass one variable to the next function
   var searchVariables = artist + " " + location;
@@ -257,10 +211,8 @@ function getToken(searchVariables) {
         return response.json();
       })
       .then(function (Results) {
-        console.log(Results);
   // this line adds the token to the front of the variable that we now pass to the next function
         var token = Results.access_token + " " + searchVariables;
-        console.log(token);
         getGenre(token);
       });
   }
@@ -269,7 +221,6 @@ function getToken(searchVariables) {
     // url will be updated with dynamic element, this is to test that genre is logging to the console in the interim
     // this line splits the big old passed variable into 3 at every space
     var holderArray = token.split(" ");
-    console.log(holderArray);
     // these variables are made from the split pieces of the array created by splitting the big old variable 
     var token = holderArray[0];
     var artist = holderArray[1];
@@ -292,7 +243,6 @@ function getToken(searchVariables) {
       var genre = Results.artists.items[0].genres;
       // this generates the new URL
       var queryString = "./eventindex.html?events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*&marketId=" + location + "&countryCode=AU&classificationName=" + genre;
-        console.log(queryString);
       // this passes the URL to the next function q: don't know why I couldn't do it in this function, but it didn't like it.
         documentAssign(queryString);
       });

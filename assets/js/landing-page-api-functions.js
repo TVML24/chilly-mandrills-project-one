@@ -31,10 +31,8 @@ function getToken(searchVariables) {
       return response.json();
     })
     .then(function (Results) {
-      console.log(Results);
 // this line adds the token to the front of the variable that we now pass to the next function
       var token = Results.access_token + " " + searchVariables;
-      console.log(token);
       getGenre(token);
     });
 }
@@ -43,7 +41,6 @@ function formSubmitHandler() {
   
   // the below line replaces any space with a hyphen
   var artist = artistInputEl.value.split(" ").join("-").trim();
-      console.log(artist);
   var location = locationinputEl.options[locationinputEl.selectedIndex].value;
   // this line combines the two variables, because we can only effectively pass one variable to the next function
   var searchVariables = artist + " " + location;
@@ -63,7 +60,6 @@ function getGenre(token) {
   // url will be updated with dynamic element, this is to test that genre is logging to the console in the interim
   // this line splits the big old passed variable into 3 at every space
   var holderArray = token.split(" ");
-  console.log(holderArray);
   // these variables are made from the split pieces of the array created by splitting the big old variable 
   var token = holderArray[0];
   var artist = holderArray[1];
@@ -86,7 +82,6 @@ function getGenre(token) {
     var genre = Results.artists.items[0].genres;
     // this generates the new URL
     var queryString = "./eventindex.html?events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*&marketId=" + location + "&countryCode=AU&classificationName=" + genre;
-      console.log(queryString);
     // this passes the URL to the next function q: don't know why I couldn't do it in this function, but it didn't like it.
       documentAssign(queryString);
     });
@@ -132,8 +127,16 @@ function populateSearches () {
   for (let i = 0; i < savedSearches.length; i++) {
     var liElement = document.createElement("button");
     liElement.classList.add("ui", "basic", "blue", "button");
-    liElement.textContent = savedSearches[i].artist.split("-").join(" ") + " in " + savedSearches[i].state;
+    var selectedLocation = "";
+    if (savedSearches[i].state === "Select Location") {
+      selectedLocation = "Australia-Wide";
+    } else {
+      selectedLocation = savedSearches[i].state;
+    }
+    liElement.textContent = savedSearches[i].artist.split("-").join(" ") + " in " + selectedLocation;
     searchHistory.appendChild(liElement);
+  // this adds an event listener to each dynamically generated button tied to an object in local storage
+  // on click it passes the necessary information back into the getToken function
     liElement.addEventListener("click", function () {
       var searchVariables = savedSearches[i].artist + " " + savedSearches[i].location;
       getToken(searchVariables);
@@ -143,8 +146,4 @@ function populateSearches () {
 
   populateSearches();
 
-// define function to be executed on 'click' of the form 'search' button
-// to be un-commented after adding of landing page
-// searchBtn.addEventListener("click", formSubmitHandler);
 
-// formSubmitHandler();
